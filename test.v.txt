@@ -1,0 +1,11 @@
+pub struct Aa {
+	// v CImVec2
+	v int
+}
+
+pub struct Ba {
+	a int
+	b Aa
+}
+
+// a := Aa{v: CImVec2{X: 1, Y: 2}}
