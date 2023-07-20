@@ -15,9 +15,6 @@ cimgui implementation inspired from:
 Compile https://github.com/floooh/cimgui-sokol-starterkit the recommended way to obtain
 
 - libcimgui.a
-<!-- - libsokol.a -->
-
-and then copy them into @VMODROOT
 
 See changes in `libs\imgui\c\declaration.c.v` for the importing of the sokol_glue.h, cimgui.h, sokol_imgui.h and precompiled libs
 
@@ -25,10 +22,13 @@ See changes in `libs\imgui\c\declaration.c.v` for the importing of the sokol_glu
 v -cc C:\msys64\mingw64\bin\cc.exe -showcc -keepc run .\src
 v -cc cc -showcc run .\src
 ```
-
+### Windows
 ```
 cc.exe (Rev6, Built by MSYS2 project) 13.1.0
 ```
+
+### Linux
+If you are using OpenGL <3, you may have to enable software rendering with `export LIBGL_ALWAYS_SOFTWARE=1`
 
 ## References
 

@@ -8,6 +8,12 @@ pub const (
 #flag -DIMGUI_DISABLE_OBSOLETE_FUNCTIONS=1
 // #flag -DIMGUI_IMPL_API=
 
+#flag -DSOKOL_GLCORE33
+// #flag -DSOKOL_GLES3
+// #flag -DSOKOL_GLES2
+// #flag -DSOKOL_WGPU
+// #flag -DSOKOL_NO_ENTRY
+
 // ----- sokol_imgui.h/sokol_glue.h -----
 #flag -I @VMODROOT/thirdparty/sokol
 #flag -I @VMODROOT/thirdparty/sokol/util
@@ -33,7 +39,9 @@ pub const (
 // this is the dll name 'libcimgui.dll'
 // #flag windows -lcimgui
 
-#flag linux -lGL -lstdc++
+// #flag linux -lGL -lstdc++
+// #flag linux -lX11 -lGL -lXcursor -lXi -lpthread -lstdc++
+#flag linux -lstdc++  -lGL -lGLU -lglfw -lrt -lm -ldl -lX11
 #flag darwin -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo `sdl2-config --libs`
 #flag darwin -lm -lc++
 #flag windows -lstdc++

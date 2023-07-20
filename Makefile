@@ -19,7 +19,7 @@ imgui:
 # cp thirdparty/cimgui/libcimgui.dll ./src
 
 sokol:
-	cd thirdparty && git clone https://github.com/floooh/sokol/tree/master
+	cd thirdparty && git clone https://github.com/floooh/sokol
 
 clean:
 	rm -f $(OBJS)
