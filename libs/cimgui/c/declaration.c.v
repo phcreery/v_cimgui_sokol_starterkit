@@ -27,7 +27,6 @@ pub const (
 #flag darwin @VMODROOT/thirdparty/cimgui/libcimgui.a
 #flag linux @VMODROOT/thirdparty/cimgui/libcimgui.a
 #flag windows @VMODROOT/thirdparty/cimgui/libcimgui.a
-// #flag windows @VMODROOT/thirdparty/cimgui-good-bkup/libcimgui.a
 
 // rpath is required for shared. for proper installs, -rpath should be relative to @executable_path/
 // on windows the dll has to be copied to the same folder as the executable
