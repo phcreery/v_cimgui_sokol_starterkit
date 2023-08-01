@@ -4,11 +4,30 @@ pub const (
 	used_import = 1
 )
 
-#flag -DCIMGUI_DEFINE_ENUMS_AND_STRUCTS=1
 #flag -DIMGUI_DISABLE_OBSOLETE_FUNCTIONS=1
-// #flag -DIMGUI_IMPL_API=
 
-#flag -DSOKOL_GLCORE33
+#flag windows -DSOKOL_GLCORE33
+#flag linux -DSOKOL_GLCORE33
+
+$if emscripten ? {
+	// #flag -DSOKOL_GLES2
+	#flag -DSOKOL_GLES3
+	#flag -DSOKOL_NO_ENTRY
+
+	// Flags for Emscripten
+	// Needed with WebGL 2 (GL ES 3.0)
+	// #flag -sMAX_WEBGL_VERSION=2
+	#flag -sUSE_WEBGL2=1
+	// WASM+JS size optimizations
+	#flag -sNO_FILESYSTEM=1 -sASSERTIONS=0 -sMALLOC=emmalloc --closure=1
+
+	#flag -s ERROR_ON_UNDEFINED_SYMBOLS=1
+	// #flag -s ASSERTIONS=1
+	// #flag -sWARN_ON_UNDEFINED_SYMBOLS=1
+	#flag -s MODULARIZE=0
+	#flag -o @VMODROOT\build\wasm\vchip8.html
+	#flag --shell-file @VMODROOT\shell_minimal.html
+}
 // #flag -DSOKOL_GLES3
 // #flag -DSOKOL_GLES2
 // #flag -DSOKOL_WGPU
@@ -20,7 +39,6 @@ pub const (
 
 // ----- cimgui.h -----
 #flag -I @VMODROOT/thirdparty/cimgui
-// #flag -I @VMODROOT/thirdparty/cimgui-good-bkup
 
 // both static and shared will work. if you use dynamic uncomment both lines below and comment this one out
 // ----- static config -----

@@ -40,6 +40,14 @@ If you are using OpenGL <3, you may have to enable software rendering with `expo
 v -cc gcc -showcc run .\src
 ```
 
+### WASM
+
+Currently not working as the cimgui needs to be compiled with emscripten too.
+
+```
+v -showcc -os wasm32_emscripten .
+```
+
 ## References
 
 - DLLs info: https://nullprogram.com/blog/2021/05/31/

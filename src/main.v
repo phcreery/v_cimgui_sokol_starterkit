@@ -4,16 +4,26 @@ import sokol.sapp
 import sokol.gfx
 // import libs.sokol.glue
 import libs.cimgui
+// import libs.cimgui.C
 import libs.sokol.simgui
+
+$if emscripten ? {
+	// Flag for Emscripten
+	// Needed with WebGL 2 (GL ES 3.0)
+	// #flag -sMAX_WEBGL_VERSION=2
+	#flag -sUSE_WEBGL2=1
+	// WASM+JS size optimizations
+	#flag -sNO_FILESYSTEM=1 -sASSERTIONS=0 -sMALLOC=emmalloc --closure=1
+}
 
 struct AppState {
 mut:
 	pass_action gfx.PassAction
 }
 
-fn my_log(message &char, user_data voidptr) {
-	println(message)
-}
+// fn my_log(message &char, user_data voidptr) {
+// 	println(message)
+// }
 
 fn frame(mut state AppState) {
 	desc := simgui.SimguiFrameDesc{
@@ -27,6 +37,7 @@ fn frame(mut state AppState) {
 	//=== UI CODE STARTS HERE ===
 	window_pos := cimgui.ImVec2{10, 10}
 	window_pivot := cimgui.ImVec2{0, 0}
+	// cimgui.create_context(unsafe { nil })
 	// imgui.C.ImGuiCond_Once
 	cimgui.set_next_window_pos(window_pos, 1 << 1, window_pivot)
 	window_size := cimgui.ImVec2{400, 100}
@@ -63,7 +74,7 @@ fn init(mut state AppState) {
 	// }
 	// desc := gfx.Desc{
 	// 	context: glue.sgcontext()
-	// 	logger: logger
+	// 	// logger: logger
 	// }
 	desc := sapp.create_desc()
 	gfx.setup(&desc)
@@ -96,7 +107,7 @@ fn main() {
 	state := &AppState{
 		pass_action: pass_action
 	}
-	title := 'V Metal/GL Text Rendering'
+	// title := 'V Metal/GL Text Rendering'
 
 	desc := sapp.Desc{
 		user_data: state
@@ -104,7 +115,7 @@ fn main() {
 		frame_userdata_cb: frame
 		cleanup_userdata_cb: cleanup
 		event_userdata_cb: event
-		window_title: title.str
+		// window_title: title.str
 		// html5_canvas_name: title.str
 	}
 
