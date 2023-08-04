@@ -4,22 +4,20 @@ pub const (
 	used_import = 1
 )
 
-#flag -DIMGUI_DISABLE_OBSOLETE_FUNCTIONS=1
+// See @VEXEROOT/vlib/sokol/c/declaration.c.v for more info on SOKOL declarations
 
-#flag windows -DSOKOL_GLCORE33
-#flag linux -DSOKOL_GLCORE33
+#flag -DIMGUI_DISABLE_OBSOLETE_FUNCTIONS=1
 
 $if emscripten ? {
 	// #flag -DSOKOL_GLES2
 	#flag -DSOKOL_GLES3
-	#flag -DSOKOL_NO_ENTRY
 
 	// Flags for Emscripten
 	// Needed with WebGL 2 (GL ES 3.0)
 	// #flag -sMAX_WEBGL_VERSION=2
 	#flag -sUSE_WEBGL2=1
 	// WASM+JS size optimizations
-	#flag -sNO_FILESYSTEM=1 -sASSERTIONS=0 -sMALLOC=emmalloc --closure=1
+	// #flag -sNO_FILESYSTEM=1 -sASSERTIONS=0 -sMALLOC=emmalloc --closure=1
 
 	#flag -s ERROR_ON_UNDEFINED_SYMBOLS=1
 	// #flag -s ASSERTIONS=1
@@ -28,10 +26,6 @@ $if emscripten ? {
 	#flag -o @VMODROOT\build\wasm\vchip8.html
 	#flag --shell-file @VMODROOT\shell_minimal.html
 }
-// #flag -DSOKOL_GLES3
-// #flag -DSOKOL_GLES2
-// #flag -DSOKOL_WGPU
-// #flag -DSOKOL_NO_ENTRY
 
 // ----- sokol_imgui.h/sokol_glue.h -----
 #flag -I @VMODROOT/thirdparty/sokol
@@ -45,6 +39,7 @@ $if emscripten ? {
 #flag darwin @VMODROOT/thirdparty/cimgui/libcimgui.a
 #flag linux @VMODROOT/thirdparty/cimgui/libcimgui.a
 #flag windows @VMODROOT/thirdparty/cimgui/libcimgui.a
+// #flag emscripten @VMODROOT/thirdparty/cimgui/libcimgui.a
 
 // rpath is required for shared. for proper installs, -rpath should be relative to @executable_path/
 // on windows the dll has to be copied to the same folder as the executable
@@ -55,14 +50,16 @@ $if emscripten ? {
 // #flag windows -L@VMODROOT/thirdparty/cimgui
 // this is the dll name 'libcimgui.dll'
 // #flag windows -lcimgui
+// NOTE: if you use shared, you will need to copy the dll to the same folder as the executable
 
-#flag linux -lGL -lstdc++
-// #flag linux -lX11 -lGL -lXcursor -lXi -lpthread -lstdc++
-// #flag linux -lstdc++ -lGL -lGLU -lglfw -lrt -lm -ldl -lX11
-#flag darwin -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo `sdl2-config --libs`
-#flag darwin -lm -lc++
+// #flag darwin -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo `sdl2-config --libs`
+
+// this is needed for cimgui
 #flag windows -lstdc++
 // #flag windows -lstdc++ -lgcc_s -lgcc_s -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+#flag linux -lstdc++
+// #flag linux -lGLU -lglfw -lrt -lm -ldl -lX11
+#flag darwin -lm -lc++
 
 #include "sokol_glue.h"
 
