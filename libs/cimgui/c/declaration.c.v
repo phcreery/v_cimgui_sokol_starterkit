@@ -15,9 +15,9 @@ pub const (
 // ----- static config -----
 #flag darwin @VMODROOT/thirdparty/cimgui/libcimgui.a
 #flag linux @VMODROOT/thirdparty/cimgui/libcimgui.a
-#flag windows @VMODROOT/thirdparty/cimgui/libcimgui.a
+#flag windows @VMODROOT/thirdparty/cimgui/build-win/libcimgui.a
 $if emscripten ? {
-	#flag @VMODROOT/thirdparty/cimgui/libcimgui.a
+	#flag @VMODROOT/thirdparty/cimgui/build-wasm/libcimgui.a
 }
 
 // rpath is required for shared. for proper installs, -rpath should be relative to @executable_path/
