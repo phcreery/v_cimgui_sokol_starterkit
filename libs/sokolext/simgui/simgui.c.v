@@ -1,10 +1,10 @@
 module simgui
 
-// import libs.sokol.c
-// import libs.sokol.gfx
 import sokol.sapp
 
-// pub const used_import = c.used_import
+// include is define here since order of imports matters with cimgui
+// #define SOKOL_IMGUI_IMPL
+#include "sokol_imgui.h"
 
 [inline]
 pub fn setup(desc &C.simgui_desc_t) {

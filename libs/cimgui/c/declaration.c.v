@@ -8,32 +8,6 @@ pub const (
 
 #flag -DIMGUI_DISABLE_OBSOLETE_FUNCTIONS=1
 
-$if emscripten ? {
-	// #flag -DSOKOL_GLES2
-	#flag -DSOKOL_GLES3
-
-	// Flags for Emscripten
-	// Needed with WebGL 2 (GL ES 3.0)
-	// #flag -sMAX_WEBGL_VERSION=2
-	#flag -sUSE_WEBGL2=1
-	// WASM+JS size optimizations
-	// https://github.com/emscripten-core/emscripten/issues/19363
-	// #flag -sNO_FILESYSTEM=1 -sASSERTIONS=0 -sMALLOC=emmalloc --closure=1
-
-	#flag -s ERROR_ON_UNDEFINED_SYMBOLS=1
-	#flag -s ASSERTIONS=1
-	// #flag -sWARN_ON_UNDEFINED_SYMBOLS=1
-	#flag -s MODULARIZE=0
-	#flag -o @VMODROOT\build\wasm\vchip8.html
-	#flag --shell-file @VMODROOT\shell_minimal.html
-
-	#flag @VMODROOT/thirdparty/cimgui/libcimgui.a
-}
-
-// ----- sokol_imgui.h/sokol_glue.h -----
-#flag -I @VMODROOT/thirdparty/sokol
-#flag -I @VMODROOT/thirdparty/sokol/util
-
 // ----- cimgui.h -----
 #flag -I @VMODROOT/thirdparty/cimgui
 
@@ -42,7 +16,9 @@ $if emscripten ? {
 #flag darwin @VMODROOT/thirdparty/cimgui/libcimgui.a
 #flag linux @VMODROOT/thirdparty/cimgui/libcimgui.a
 #flag windows @VMODROOT/thirdparty/cimgui/libcimgui.a
-
+$if emscripten ? {
+	#flag @VMODROOT/thirdparty/cimgui/libcimgui.a
+}
 
 // rpath is required for shared. for proper installs, -rpath should be relative to @executable_path/
 // on windows the dll has to be copied to the same folder as the executable
@@ -64,10 +40,5 @@ $if emscripten ? {
 // #flag linux -lGLU -lglfw -lrt -lm -ldl -lX11
 #flag darwin -lm -lc++
 
-#include "sokol_glue.h"
-
 #define CIMGUI_DEFINE_ENUMS_AND_STRUCTS
 #include "cimgui.h"
-
-// #define SOKOL_IMGUI_IMPL
-#include "sokol_imgui.h"

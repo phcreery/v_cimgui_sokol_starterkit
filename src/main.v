@@ -3,26 +3,10 @@ module main
 // import sokol
 import sokol.sapp
 import sokol.gfx
-// import libs.sokol.glue
+import libs.sokolext
+// import libs.sokolext.glue
 import libs.cimgui
-import libs.sokol.simgui
-
-$if emscripten ? {
-	// cimgui sokol starterkit flags -sNO_FILESYSTEM=1 -sASSERTIONS=0 -sMALLOC=emmalloc --closure=1
-
-	// V needs a filesystem because at startup it does a "_const_os__wd_at_startup = os__getwd();" in _vinit()
-	// #flag -sNO_FILESYSTEM=1
-	#flag -s "MALLOC='emmalloc'"
-	#flag --closure=1
-
-	// keep function names
-	#flag -g3
-
-}
-
-// const (
-// 	used_import = sokol.used_import
-// )
+import libs.sokolext.simgui
 
 struct AppState {
 mut:
