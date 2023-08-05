@@ -21,7 +21,7 @@ See changes in `libs\imgui\c\declaration.c.v` for the importing of the sokol_glu
 
 ### Windows
 
-Use MSVC
+MSVC has been tested
 
 ```
 v -cc C:\msys64\mingw64\bin\cc.exe -showcc -keepc run .\src
@@ -42,7 +42,7 @@ v -cc gcc -showcc run .\src
 
 ### WASM
 
-Currently not working as the cimgui needs to be compiled with emscripten too.
+cimgui needs to be compiled with emscripten
 
 ```
 v -showcc -os wasm32_emscripten .
