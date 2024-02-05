@@ -85,22 +85,8 @@ fn init(mut state AppState) {
 }
 
 fn main() {
-	mut color_action := gfx.ColorAttachmentAction{
-		load_action: .clear
-		clear_value: gfx.Color{
-			r: 0.3
-			g: 0.3
-			b: 0.32
-			a: 1.0
-		}
-	}
-	mut pass_action := gfx.PassAction{}
-	pass_action.colors[0] = color_action
-	state := &AppState{
-		pass_action: pass_action
-		// pass_action: gfx.create_clear_pass(1, 0.1, 0.1, 1.0)
-	}
-	// title := 'V Metal/GL Text Rendering'
+	// main
+	state := &AppState{	}
 
 	desc := sapp.Desc{
 		user_data: state
