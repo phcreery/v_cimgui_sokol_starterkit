@@ -15,8 +15,9 @@ app: $(OBJS)
 imgui:
 	cd thirdparty && git clone --recursive https://github.com/cimgui/cimgui.git
 	cd thirdparty/cimgui && $(MAKE) static
+# FOR SHARED DLL INSTEAD OF STATIC
 # copy dll to ./src
-# cp thirdparty/cimgui/libcimgui.dll ./src
+# cp ./thirdparty/cimgui/libcimgui.dll ./src
 
 sokol:
 	cd thirdparty && git clone https://github.com/floooh/sokol

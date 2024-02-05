@@ -8,47 +8,47 @@ const (
 
 pub type ImVec2 = C.ImVec2
 
-[inline]
+@[inline]
 pub fn begin(name string, p_open &bool, flags int) bool {
 	return C.igBegin(name.str, p_open, flags)
 }
 
-[inline]
+@[inline]
 pub fn end() {
 	C.igEnd()
 }
 
-[inline]
+@[inline]
 pub fn create_context(shared_font_atlas &C.ImFontAtlas) &C.ImGuiContext {
 	return C.igCreateContext(shared_font_atlas)
 }
 
-[inline]
+@[inline]
 pub fn destroy_context(ctx &C.ImGuiContext) {
 	C.igDestroyContext(ctx)
 }
 
-[inline]
+@[inline]
 pub fn get_current_context() &C.ImGuiContext {
 	return C.igGetCurrentContext()
 }
 
-[inline]
+@[inline]
 pub fn set_current_context(ctx &C.ImGuiContext) {
 	C.igSetCurrentContext(ctx)
 }
 
-[inline]
+@[inline]
 pub fn set_next_window_pos(pos C.ImVec2, cond int, pivot C.ImVec2) {
 	C.igSetNextWindowPos(pos, cond, pivot)
 }
 
-[inline]
+@[inline]
 pub fn set_next_window_size(size C.ImVec2, cond int) {
 	C.igSetNextWindowSize(size, cond)
 }
 
-[inline]
+@[inline]
 pub fn color_edit3(label string, col &f32, flags int) bool {
 	return C.igColorEdit3(label.str, col, flags)
 }

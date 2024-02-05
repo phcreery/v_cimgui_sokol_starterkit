@@ -39,7 +39,7 @@ fn frame(mut state AppState) {
 	p_open := false
 	cimgui.begin('Hello Dear ImGui!', &p_open, 0)
 	// ImGuiColorEditFlags_None = 0
-	cimgui.color_edit3('Background', &state.pass_action.colors[0].value.r, 0)
+	cimgui.color_edit3('Background', &state.pass_action.colors[0].clear_value.r, 0)
 	cimgui.end()
 	//=== UI CODE ENDS HERE ===
 
@@ -76,8 +76,8 @@ fn init(mut state AppState) {
 	// initial clear color
 	mut colors := state.pass_action.colors
 	colors[0] = gfx.ColorAttachmentAction{
-		action: gfx.Action.clear
-		value: gfx.Color{0.0, 0.5, 1.0, 1.0}
+		load_action: .clear
+		clear_value: gfx.Color{0.0, 0.5, 1.0, 1.0}
 	}
 	state.pass_action = gfx.PassAction{
 		colors: colors
@@ -86,8 +86,8 @@ fn init(mut state AppState) {
 
 fn main() {
 	mut color_action := gfx.ColorAttachmentAction{
-		action: .clear
-		value: gfx.Color{
+		load_action: .clear
+		clear_value: gfx.Color{
 			r: 0.3
 			g: 0.3
 			b: 0.32

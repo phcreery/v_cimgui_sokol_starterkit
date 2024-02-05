@@ -12,6 +12,7 @@ $if emscripten ? {
 	// Needed with WebGL 2 (GL ES 3.0)
 	// #flag -sMAX_WEBGL_VERSION=2
 	#flag -sUSE_WEBGL2=1
+	
 	// WASM+JS size optimizations used by floooh (sokol)
 	// https://github.com/emscripten-core/emscripten/issues/19363
 	// #flag -sNO_FILESYSTEM=1 -sASSERTIONS=0 -sMALLOC=emmalloc --closure=1

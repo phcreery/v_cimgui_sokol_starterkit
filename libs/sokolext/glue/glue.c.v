@@ -2,7 +2,7 @@ module glue
 
 import sokol.gfx
 
-[inline]
+@[inline]
 pub fn sgcontext() gfx.ContextDesc {
 	return C.sapp_sgcontext()
 }

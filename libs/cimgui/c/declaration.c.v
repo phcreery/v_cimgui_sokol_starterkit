@@ -15,7 +15,7 @@ pub const (
 // ----- static config -----
 #flag darwin @VMODROOT/thirdparty/cimgui/libcimgui.a
 #flag linux @VMODROOT/thirdparty/cimgui/libcimgui.a
-#flag windows @VMODROOT/thirdparty/cimgui/build-win/libcimgui.a
+#flag windows @VMODROOT/thirdparty/cimgui/libcimgui.a
 $if emscripten ? {
 	#flag @VMODROOT/thirdparty/cimgui/build-wasm/libcimgui.a
 }

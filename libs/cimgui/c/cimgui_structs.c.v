@@ -93,7 +93,7 @@ pub mut:
 	TexID voidptr
 	TexDesiredWidth int
 	TexGlyphPadding int
-	TexPixelsAlpha8 &byte
+	TexPixelsAlpha8 &u8
 	TexPixelsRGBA32 &u32
 	TexWidth int
 	TexHeight int

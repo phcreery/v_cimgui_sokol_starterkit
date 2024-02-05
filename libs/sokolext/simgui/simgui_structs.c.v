@@ -3,7 +3,7 @@ module simgui
 import sokol.gfx
 import sokol.memory
 
-[typedef]
+@[typedef]
 pub struct C.simgui_allocator_t {
 pub mut:
 	alloc     memory.FnAllocatorAlloc
@@ -16,7 +16,7 @@ pub mut:
 
 pub type SimguiAllocator = C.simgui_allocator_t
 
-[typedef]
+@[typedef]
 pub struct C.simgui_desc_t {
 pub mut:
 	max_vertices                      int
@@ -34,7 +34,7 @@ pub mut:
 
 pub type SimguiDesc = C.simgui_desc_t
 
-[typedef]
+@[typedef]
 pub struct C.simgui_frame_desc_t {
 pub mut:
 	width      int
