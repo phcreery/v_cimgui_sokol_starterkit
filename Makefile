@@ -5,17 +5,15 @@ OBJS = thirdparty/cimgui/libcimgui.o
 OBJS += thirdparty/sokol/sokol_glue.h
 OBJS += thirdparty/sokol/util/sokol_imgui.h
 
-# CXXFLAGS=-O2 -fno-exceptions -fno-rtti -fno-threadsafe-statics
-
 UNAME_S := $(shell uname -s)
 
 app: $(OBJS)
 	v -cc cc -showcc .\src
 
-imgui:
+cimgui:
 	cd thirdparty && git clone --recursive https://github.com/cimgui/cimgui.git
 	cd thirdparty/cimgui && $(MAKE) static
-# FOR SHARED DLL INSTEAD OF STATIC
+# FOR SHARED DLL INSTEAD OF STATIC, UNCOMMENT BELOW
 # copy dll to ./src
 # cp ./thirdparty/cimgui/libcimgui.dll ./src
 

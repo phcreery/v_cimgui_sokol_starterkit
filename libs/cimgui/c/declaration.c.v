@@ -1,9 +1,5 @@
 module c
 
-pub const (
-	used_import = 1
-)
-
 // See @VEXEROOT/vlib/sokol/c/declaration.c.v for more info on SOKOL declarations
 
 #flag -DIMGUI_DISABLE_OBSOLETE_FUNCTIONS=1

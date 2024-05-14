@@ -1,10 +1,6 @@
 module cimgui
 
-import libs.cimgui.c
-
-const (
-	imgui_used_import = c.used_import
-)
+import libs.cimgui.c as _
 
 pub type ImVec2 = C.ImVec2
 
@@ -39,12 +35,12 @@ pub fn set_current_context(ctx &C.ImGuiContext) {
 }
 
 @[inline]
-pub fn set_next_window_pos(pos C.ImVec2, cond int, pivot C.ImVec2) {
+pub fn set_next_window_pos(pos ImVec2, cond int, pivot ImVec2) {
 	C.igSetNextWindowPos(pos, cond, pivot)
 }
 
 @[inline]
-pub fn set_next_window_size(size C.ImVec2, cond int) {
+pub fn set_next_window_size(size ImVec2, cond int) {
 	C.igSetNextWindowSize(size, cond)
 }
 

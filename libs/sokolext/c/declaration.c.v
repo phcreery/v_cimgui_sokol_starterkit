@@ -1,9 +1,5 @@
 module c
 
-pub const (
-	used_import = 1
-)
-
 $if emscripten ? {
 	// #flag -DSOKOL_GLES2
 	#flag -DSOKOL_GLES3
@@ -12,7 +8,7 @@ $if emscripten ? {
 	// Needed with WebGL 2 (GL ES 3.0)
 	// #flag -sMAX_WEBGL_VERSION=2
 	#flag -sUSE_WEBGL2=1
-	
+
 	// WASM+JS size optimizations used by floooh (sokol)
 	// https://github.com/emscripten-core/emscripten/issues/19363
 	// #flag -sNO_FILESYSTEM=1 -sASSERTIONS=0 -sMALLOC=emmalloc --closure=1
@@ -35,5 +31,3 @@ $if emscripten ? {
 // ----- sokol_imgui.h/sokol_glue.h -----
 #flag -I @VMODROOT/thirdparty/sokol
 #flag -I @VMODROOT/thirdparty/sokol/util
-
-#include "sokol_glue.h"

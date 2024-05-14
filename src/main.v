@@ -1,10 +1,8 @@
 module main
 
-// import sokol
 import sokol.sapp
 import sokol.gfx
-import libs.sokolext
-// import libs.sokolext.glue
+import libs.sokolext as _
 import libs.cimgui
 import libs.sokolext.simgui
 
@@ -29,8 +27,6 @@ fn frame(mut state AppState) {
 	//=== UI CODE STARTS HERE ===
 	window_pos := cimgui.ImVec2{10, 10}
 	window_pivot := cimgui.ImVec2{0, 0}
-	// cimgui.create_context(unsafe { nil })
-	// imgui.C.ImGuiCond_Once
 	cimgui.set_next_window_pos(window_pos, 1 << 1, window_pivot)
 	window_size := cimgui.ImVec2{400, 100}
 	// imgui.C.ImGuiCond_Once = 1 << 1
@@ -43,7 +39,8 @@ fn frame(mut state AppState) {
 	cimgui.end()
 	//=== UI CODE ENDS HERE ===
 
-	gfx.begin_default_pass(&state.pass_action, sapp.width(), sapp.height())
+	pass := sapp.create_default_pass(state.pass_action)
+	gfx.begin_pass(&pass)
 	simgui.render()
 	gfx.end_pass()
 	gfx.commit()
@@ -85,8 +82,8 @@ fn init(mut state AppState) {
 }
 
 fn main() {
-	// main
-	state := &AppState{	}
+	title := 'V sokol cimgui demo'
+	state := &AppState{}
 
 	desc := sapp.Desc{
 		user_data: state
@@ -94,8 +91,8 @@ fn main() {
 		frame_userdata_cb: frame
 		cleanup_userdata_cb: cleanup
 		event_userdata_cb: event
-		// window_title: title.str
-		// html5_canvas_name: title.str
+		window_title: title.str
+		html5_canvas_name: title.str
 	}
 
 	sapp.run(&desc)
