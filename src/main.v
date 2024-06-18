@@ -33,7 +33,7 @@ fn frame(mut state AppState) {
 	cimgui.set_next_window_size(window_size, 1 << 1)
 	// imgui.C.ImGuiWindowFlags_None = 0
 	p_open := false
-	cimgui.begin('Hello Dear ImGui!', &p_open, 0)
+	cimgui.begin('Hello Dear ImGui from V!', &p_open, 0)
 	// ImGuiColorEditFlags_None = 0
 	cimgui.color_edit3('Background', &state.pass_action.colors[0].clear_value.r, 0)
 	cimgui.end()

@@ -1,8 +1,16 @@
-# V implementation of https://github.com/floooh/cimgui-sokol-starterkit
+# V + cimgui + sokol
+
+V implementation of https://github.com/floooh/cimgui-sokol-starterkit
+
+![](docs/windows.png)
+_Native Window_
+
+![](docs/wasm.png)
+_In the browser with WASM_
 
 ## Compiling
 
-Compile https://github.com/floooh/cimgui-sokol-starterkit the recommended way to obtain static lib. See Makefile for more information
+Compile [cimgui](https://github.com/cimgui/cimgui) the recommended way to obtain static lib. See Makefile for more information
 
 ```
 cd 'v_cimgui_sokol_starterkit'
@@ -32,11 +40,13 @@ v -cc gcc -showcc run .\src
 
 ### WASM
 
-- cimgui library first needs to be compiled with emscripten
-- then:
-  ```
-  v -showcc -os wasm32_emscripten .
-  ```
+cimgui library first needs to be compiled with emscripten
+
+Then compile with wasm as the target
+
+```
+v -showcc -os wasm32_emscripten .
+```
 
 ## References
 
